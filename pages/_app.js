@@ -24,14 +24,14 @@ const GlobalStyle = createGlobalStyle`
     --size-xl: ${style.size.xl};
     --size-base: ${style.size.base};
     --size-base-fixed: ${style.size.base};
-    --size-button: auto;
+    --size-button: 2.5rem;
 
 
-    @media (max-width: ${style.breakpoint.tabletLarge}) {
+    @media (max-width: ${style.breakpoint.tabletLandscape}) {
       --size-button: 3rem;
     } 
 
-    @media (max-width: ${style.breakpoint.tabletSmall}) {
+    @media (max-width: ${style.breakpoint.tabletPortrait}) {
       --size-xs: ${style.sizeMobile.xs};
       --size-s: ${style.sizeMobile.s};
       --size-m: ${style.sizeMobile.m};
@@ -54,7 +54,7 @@ html, body, #__next {
     font-size: 16px;
     scroll-behavior: smooth;
 
-    @media (max-width: ${style.breakpoint.tabletPortrait}) {
+    ${'' /* @media (max-width: ${style.breakpoint.tabletPortrait}) {
       font-size: 13px;
     }
 
@@ -76,7 +76,7 @@ html, body, #__next {
     
     @media (min-width: ${style.breakpoint.desktopXXL}) {
     font-size: 21px;
-    }
+    } */}
   }
 
   body {
@@ -85,7 +85,7 @@ html, body, #__next {
     font-size: 16px;
     background-color: ${style.color.light};
 
-    @media (max-width: ${style.breakpoint.tabletPortrait}) {
+    ${'' /* @media (max-width: ${style.breakpoint.tabletPortrait}) {
       font-size: 15px;
     }
 
@@ -107,7 +107,7 @@ html, body, #__next {
     
     @media (min-width: ${style.breakpoint.desktopXXL}) {
       font-size: 24px;
-    } 
+    }  */}
   }
 
   a img {outline : none;}

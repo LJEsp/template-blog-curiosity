@@ -12,12 +12,13 @@ export default {
     sansSerif: "PT Sans, sans-serif",
     serif: "PT Serif, serif",
     scale: {
+      small: "0.875em", // >>> 14px
       base: "1em", // >>> 16px
-      p: "1.1875em", // >>> 19px
-      h4: "1.1875em", // >>> 24px
-      h3: "1.5em", // >>> 24px
-      h2: "2em", // >>> 32px
-      h1: "3em" // >>> 48px
+      body: "1.1875em", // >>> 19px
+      display4: "1.1875em", // >>> 24px
+      display3: "1.5em", // >>> 24px
+      display2: "2em", // >>> 32px
+      display1: "3em" // >>> 48px
     },
     lineHeight: 1.5,
     letterSpacing: "0.04em"
@@ -39,6 +40,7 @@ export default {
       dark: ""
     },
     light: "#FAFAFA",
+    lightFixed: "#FAFAFA",
     dark: "#212121",
     white: "#FFFFFF",
     black: "#000000",
