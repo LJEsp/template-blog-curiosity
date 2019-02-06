@@ -45,16 +45,74 @@ const GlobalStyle = createGlobalStyle`
 
 }
 
-html {
-  font-size: 16px;
-}
+html, body, #__next {
+    height: 100%;
+  }
 
-body {
-  color: ${style.color.dark};
-  font-family: ${style.font.family.primary};
-  font-size: 16px;
-  background-color: ${style.color.light};
-}
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+
+    @media (max-width: ${style.breakpoint.tabletPortrait}) {
+      font-size: 13px;
+    }
+
+    @media (min-width: ${style.breakpoint.tabletLandscape}) {
+      font-size: 16px;
+    }
+
+    @media (min-width: ${style.breakpoint.desktopM}) {
+      font-size: 13px;
+    }
+    
+    @media (min-width: ${style.breakpoint.desktopL}) {
+      font-size: 15px;
+    }
+
+    @media (min-width: ${style.breakpoint.desktopXL}) {
+      font-size: 16px;
+    }
+    
+    @media (min-width: ${style.breakpoint.desktopXXL}) {
+    font-size: 21px;
+    }
+  }
+
+  body {
+    color: ${style.color.dark};
+    font-family: ${style.font.sansSerif};
+    font-size: 16px;
+    background-color: ${style.color.light};
+
+    @media (max-width: ${style.breakpoint.tabletPortrait}) {
+      font-size: 15px;
+    }
+
+    @media (min-width: ${style.breakpoint.tabletLandscape}) {
+      font-size: 16px;
+    } 
+    
+    @media (min-width: ${style.breakpoint.desktopM}) {
+      font-size: 15px;
+    }
+
+    @media (min-width: ${style.breakpoint.desktopL}) {
+      font-size: 16px;
+    }
+
+    @media (min-width: ${style.breakpoint.desktopXL}) {
+      font-size: 16px;
+    }
+    
+    @media (min-width: ${style.breakpoint.desktopXXL}) {
+      font-size: 24px;
+    } 
+  }
+
+  a img {outline : none;}
+  img {border : 0;}
+  a {outline : none;}
 `;
 
 export default class MyApp extends App {

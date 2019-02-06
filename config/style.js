@@ -1,32 +1,32 @@
 export default {
-  // >>> desktop first breakpoints
   breakpoint: {
-    mobile: "599px", // >>> 599px
-    tabletSmall: "719px", // >>> 719px
-    tabletSmallEnd: "720px", // >>> 719px
-    tabletLarge: "839px" // >>> 839px
+    phone: "0rem",
+    tabletPortrait: "37.5rem",
+    tabletLandscape: "56.25rem",
+    desktopM: "75rem",
+    desktopL: "93.75rem",
+    desktopXL: "112.5rem",
+    desktopXXL: "125rem"
   },
   font: {
-    family: {
-      primary: "Montserrat, sans-serif"
+    sansSerif: "PT Sans, sans-serif",
+    serif: "PT Serif, serif",
+    scale: {
+      base: "1em", // >>> 16px
+      p: "1.1875em", // >>> 19px
+      h4: "1.1875em", // >>> 24px
+      h3: "1.5em", // >>> 24px
+      h2: "2em", // >>> 32px
+      h1: "3em" // >>> 48px
     },
-    scale: [
-      "1em", // >>> 16px
-      "1.1875em", // >>> 19px
-      "1.3125em", // >>> 21px
-      "1.5em", // >>> 24px
-      "1.75em", // >>> 28px
-      "2em", // >>> 32px
-      "3em", // >>> 48px
-      "3.875em" // >>> 62px
-    ],
-    lineHeight: 1.5
+    lineHeight: 1.5,
+    letterSpacing: "0.04em"
   },
   color: {
     primary: {
-      main: "#A5E7E8",
-      light: "",
-      dark: ""
+      light: "#64B5F6",
+      main: "#1E88E5",
+      dark: "#0D47A1"
     },
     seconday: {
       main: "",
@@ -49,6 +49,7 @@ export default {
     }
   },
   size: {
+    xxs: "0.125rem", // >>> 2
     xs: "0.25rem", // >>> 4
     s: "0.5rem", // >>> 8
     m: "1rem", // >>> 16
@@ -67,10 +68,10 @@ export default {
   increment: increment => `calc(${increment} * var(--size-base))`,
   incrementFixed: increment => `calc(${increment} * var(--size-base-fixed))`,
   shadow: [
-    "0 0.0625em 0.1875em rgba(0,0,0,0.12), 0 0.0625em 0.125em rgba(0,0,0,0.24)",
-    "0 0.1875em 0.375em rgba(0,0,0,0.16), 0 0.1875em 0.375em rgba(0,0,0,0.23)",
-    "0 0.625em 1.25em rgba(0,0,0,0.19), 0 0.375em 0.375em rgba(0,0,0,0.23)",
-    "0 0.875em 1.75em rgba(0,0,0,0.25), 0 0.625em 0.625em rgba(0,0,0,0.22)",
-    "0 1.1875em 2.375em rgba(0,0,0,0.30), 0 0.9375em 0.75em rgba(0,0,0,0.22)"
+    "0 0.0625em 0.1875em rgba(0,0,0,0.12), 0 0.0625em 0.125em rgba(0,0,0,0.16)",
+    "0 0.1875em 0.375em rgba(0,0,0,0.16), 0 0.1875em 0.375em rgba(0,0,0,0.16)",
+    "0 0.625em 1.25em rgba(0,0,0,0.19), 0 0.375em 0.375em rgba(0,0,0,0.16)",
+    "0 0.875em 1.75em rgba(0,0,0,0.25), 0 0.625em 0.625em rgba(0,0,0,0.16)",
+    "0 1.1875em 2.375em rgba(0,0,0,0.30), 0 0.9375em 0.75em rgba(0,0,0,0.16)"
   ]
 };

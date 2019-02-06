@@ -162,20 +162,10 @@ const spacingProperties = ({
         (padding === "inset-m" && insetMMobile) ||
         (padding === "inset-l" && insetBaseMobile) ||
         (padding === "inset-xl" && insetXlMobile) ||
-        /*(padding === "squish-base" && squishBaseMobile) ||
-        (padding === "squish-s" && squishSMobile) ||
-        (padding === "squish-m" && squishMMobile) ||
-        (padding === "squish-l" && squishLMobile) || */
         (padding === "stretch-s" && stretchSMobile) ||
         (padding === "stretch-m" && stretchMMobile)};
 
-      margin: ${(margin === "stack-base" && stackBaseMobile) ||
-        (margin === "stack-xs" && stackXsMobile) ||
-        (margin === "stack-s" && stackSMobile) ||
-        (margin === "stack-m" && stackMMobile) ||
-        (margin === "stack-l" && stackLMobile) ||
-        (margin === "stack-xl" && stackXlMobile) ||
-        (margin === "inline-base" && inlineBaseMobile) ||
+      margin: ${(margin === "inline-base" && inlineBaseMobile) ||
         (margin === "inline-xs" && inlineXsMobile) ||
         (margin === "inline-s" && inlineSMobile) ||
         (margin === "inline-m" && inlineMMobile) ||
@@ -217,7 +207,11 @@ const AnimatedItem = animated(StyledItem);
 
 const Item = ({ name, ...props }) => {
   return props.animate ? (
-    <AnimatedItem className={name ? `item item-${name}` : "item"} {...props}>
+    <AnimatedItem
+      style={props.animate}
+      className={name ? `item item-${name}` : "item"}
+      {...props}
+    >
       {props.children}
     </AnimatedItem>
   ) : (
@@ -270,6 +264,7 @@ const AnimatedBox = animated(StyledBox);
 const Box = ({ name, wrap, ...props }) => {
   return props.animate ? (
     <AnimatedBox
+      style={props.animate}
       className={name ? `box box-${name}` : "box"}
       wrap={wrap ? 1 : 0}
       {...props}
@@ -316,6 +311,7 @@ const AnimatedContainer = animated(StyledContainer);
 const Container = ({ name, ...props }) => {
   return props.animate ? (
     <AnimatedContainer
+      style={props.animate}
       className={name ? `container container-${name}` : "container"}
       {...props}
     >
@@ -353,7 +349,11 @@ const AnimatedArea = animated(StyledArea);
 
 const Area = ({ name, ...props }) => {
   return props.animate ? (
-    <AnimatedArea className={name ? `area area-${name}` : "area"} {...props}>
+    <AnimatedArea
+      style={props.animate}
+      className={name ? `area area-${name}` : "area"}
+      {...props}
+    >
       {props.children}
     </AnimatedArea>
   ) : (
