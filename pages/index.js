@@ -4,7 +4,7 @@ import { Button, Typography } from "../components/elements";
 import { Item, Box, Container } from "../components/layout";
 
 const StyledIndex = styled.div`
-  /* background-color: ${p => p.theme.color.dark}; */
+  background-color: ${p => p.theme.color.grey.light};
 `;
 
 export default class extends Component {
@@ -20,29 +20,40 @@ export default class extends Component {
             </Item>
 
             <Item margin="stack-base">
-              <Button>Button</Button>
+              <Button>Button Default</Button>
             </Item>
 
             <Item margin="stack-base">
-              <Button variant="primary">Button &mdash; Primary</Button>
+              <Button variant="primary">Button variant="primary"</Button>
+            </Item>
+
+            <Item margin="stack-base">
+              <Button variant="secondary">Button variant="secondary"</Button>
+            </Item>
+
+            <Item margin="stack-base">
+              <Button variant="text">Button variant="text"</Button>
             </Item>
 
             <Box margin="stack-base">
               <Item margin="inline-base">
                 <Button variant="primary" icon rounded>
                   <i className="fas fa-play" />
+                  <span id="hidden">Play</span>
                 </Button>
               </Item>
 
               <Item margin="inline-base">
                 <Button variant="icon" icon rounded>
                   <i className="fab fa-youtube" />
+                  <span id="hidden">Youtube</span>
                 </Button>
               </Item>
 
               <Item margin="inline-base">
                 <Button variant="icon" icon rounded>
                   <i className="fab fa-css3" />
+                  <span id="hidden">CSS</span>
                 </Button>
               </Item>
             </Box>
@@ -71,6 +82,15 @@ export default class extends Component {
                   <i className="fas fa-play" />
                 </Item>
                 Button — Primary with icon (full)
+              </Button>
+            </Item>
+
+            <Item margin="stack-base">
+              <Button variant="primary" disabled>
+                <Item inline margin="inline-s">
+                  <i className="fas fa-play" />
+                </Item>
+                Button — Primary, disabled
               </Button>
             </Item>
           </Container>

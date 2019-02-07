@@ -33,7 +33,6 @@ const StyledButton = styled.button`
   box-shadow: ${p => p.theme.shadow[0]};
   transition-property: box-shadow, background-color;
   transition-duration: 100ms;
-  background-color: ${p => p.theme.color.light};
   font-size: ${p => p.theme.font.scale.base};
   padding: ${p => p.theme.size.s} ${p => p.theme.size.m};
   display: flex;
@@ -42,6 +41,7 @@ const StyledButton = styled.button`
 
   ${configs};
 
+  /* 
   &:hover {
     box-shadow: ${p => p.theme.shadow[1]};
   }
@@ -49,11 +49,74 @@ const StyledButton = styled.button`
   &:focus {
     box-shadow: 0 0 0 var(--size-xs) ${p => p.theme.color.primary.light};
   }
+
+  &:active {
+    box-shadow: 0 0 0 var(--size-xxs) ${p => p.theme.color.primary.light};
+  }
+  */
+
+  &:disabled {
+    background-color: ${p => p.theme.color.grey.medium};
+    box-shadow: unset;
+  } 
 `;
 
+// >>> Primary
 const StyledButtonPrimary = styled(StyledButton)`
   background-color: ${p => p.theme.color.primary.main};
   color: ${p => p.theme.color.lightFixed};
+
+  &:hover {
+    box-shadow: ${p => p.theme.shadow[1]};
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 var(--size-xs) ${p => p.theme.color.primary.light};
+  }
+
+  &:active {
+    background-color: ${p => p.theme.color.primary.dark};
+    box-shadow: 0 0 0 var(--size-xxs) ${p => p.theme.color.primary.light};
+  }
+`;
+
+// >>> Secondary
+const StyledButtonSecondary = styled(StyledButton)`
+  background-color: ${p => p.theme.color.white};
+  color: ${p => p.theme.color.primary.main};
+
+  &:hover {
+    box-shadow: ${p => p.theme.shadow[1]};
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 var(--size-xs) ${p => p.theme.color.primary.light};
+  }
+
+  &:active {
+    color: ${p => p.theme.color.primary.dark};
+    box-shadow: 0 0 0 var(--size-xxs) ${p => p.theme.color.primary.light};
+  }
+`;
+
+// >>> Text
+const StyledButtonText = styled(StyledButton)`
+  box-shadow: 0 0 0 0 transparent;
+  background-color: unset;
+
+  &:hover {
+    box-shadow: 0 0 0 0 transparent;
+    color: ${p => p.theme.color.primary.main};
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 var(--size-xs) ${p => p.theme.color.primary.light};
+  }
+
+  &:active {
+    color: ${p => p.theme.color.primary.dark};
+    box-shadow: 0 0 0 var(--size-xxs) ${p => p.theme.color.primary.light};
+  }
 `;
 
 export class Button extends Component {
@@ -62,7 +125,7 @@ export class Button extends Component {
   };
 
   render() {
-    const { variant, icon } = this.props;
+    const { variant } = this.props;
 
     switch (variant) {
       case "primary":
@@ -72,9 +135,21 @@ export class Button extends Component {
           </StyledButtonPrimary>
         );
 
+      case "secondary":
+        return (
+          <StyledButtonSecondary {...this.props}>
+            {this.props.children}
+          </StyledButtonSecondary>
+        );
+
+      case "text":
+        return <StyledButtonText>{this.props.children}</StyledButtonText>;
+
       default:
         return (
-          <StyledButton {...this.props}>{this.props.children}</StyledButton>
+          <StyledButtonPrimary {...this.props}>
+            {this.props.children}
+          </StyledButtonPrimary>
         );
     }
   }

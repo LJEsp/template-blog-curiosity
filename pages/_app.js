@@ -17,6 +17,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 // >>> Global styles
 const GlobalStyle = createGlobalStyle`
   :root {
+    --size-xxs: ${style.size.xxs};
     --size-xs: ${style.size.xs};
     --size-s: ${style.size.s};
     --size-m: ${style.size.m};
@@ -113,6 +114,10 @@ html, body, #__next {
   a img {outline : none;}
   img {border : 0;}
   a {outline : none;}
+
+  #hidden {
+    display: none;
+  }
 `;
 
 export default class MyApp extends App {
