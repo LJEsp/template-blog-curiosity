@@ -47,15 +47,16 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html, body, #__next {
-    height: 100%;
-  }
+  height: 100%;
+}
 
 
   html {
     font-size: 16px;
     scroll-behavior: smooth;
 
-    ${'' /* @media (max-width: ${style.breakpoint.tabletPortrait}) {
+    ${
+      "" /* @media (max-width: ${style.breakpoint.tabletPortrait}) {
       font-size: 13px;
     }
 
@@ -77,16 +78,18 @@ html, body, #__next {
     
     @media (min-width: ${style.breakpoint.desktopXXL}) {
     font-size: 21px;
-    } */}
+    } */
+    }
   }
 
   body {
     color: ${style.color.dark};
     font-family: ${style.font.sansSerif};
     font-size: 16px;
-    background-color: ${style.color.light};
+    background-color: ${style.color.white};
 
-    ${'' /* @media (max-width: ${style.breakpoint.tabletPortrait}) {
+    ${
+      "" /* @media (max-width: ${style.breakpoint.tabletPortrait}) {
       font-size: 15px;
     }
 
@@ -108,12 +111,13 @@ html, body, #__next {
     
     @media (min-width: ${style.breakpoint.desktopXXL}) {
       font-size: 24px;
-    }  */}
+    }  */
+    }
   }
 
   a img {outline : none;}
   img {border : 0;}
-  a {outline : none;}
+  a {outline : none; cursor: pointer;}
 
   #hidden {
     display: none;
@@ -137,7 +141,7 @@ export default class MyApp extends App {
     return (
       <Fragment>
         <Head>
-          <title>LJEsp | Next.js Basic Boilerplate</title>
+          <title>Curiosity — Blog Template | LJEsp</title>
         </Head>
 
         <ThemeProvider theme={style}>

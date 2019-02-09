@@ -9,7 +9,7 @@ export default {
     desktopXXL: "125rem"
   },
   font: {
-    sansSerif: "PT Sans, sans-serif",
+    sansSerif: "Montserrat, sans-serif",
     serif: "PT Serif, serif",
     scale: {
       small: "0.875em", // >>> 14px
