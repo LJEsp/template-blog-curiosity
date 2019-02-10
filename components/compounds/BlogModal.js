@@ -22,7 +22,7 @@ const StyledBlogModal = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: ${p => p.theme.color.light};
+    background-color: ${p => p.theme.color.white};
     opacity: 0.95;
     z-index: 100;
   }
