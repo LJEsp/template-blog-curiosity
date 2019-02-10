@@ -224,7 +224,7 @@ const Item = ({ name, ...props }) => {
 Item.propTypes = {
   padding: PropTypes.string,
   margin: PropTypes.string,
-  animate: PropTypes.bool,
+  animate: PropTypes.object,
   name: PropTypes.string,
   topleft: PropTypes.bool,
   top: PropTypes.bool,
@@ -285,7 +285,7 @@ const Box = ({ name, wrap, ...props }) => {
 Box.propTypes = {
   padding: PropTypes.string,
   margin: PropTypes.string,
-  animate: PropTypes.bool,
+  animate: PropTypes.object,
   name: PropTypes.string,
   row: PropTypes.bool,
   column: PropTypes.bool,
@@ -330,7 +330,7 @@ const Container = ({ name, ...props }) => {
 Container.propTypes = {
   padding: PropTypes.string,
   margin: PropTypes.string,
-  animate: PropTypes.bool,
+  animate: PropTypes.object,
   name: PropTypes.string
 };
 
@@ -366,7 +366,7 @@ const Area = ({ name, ...props }) => {
 Area.propTypes = {
   padding: PropTypes.string,
   margin: PropTypes.string,
-  animate: PropTypes.bool,
+  animate: PropTypes.object,
   name: PropTypes.string
 };
 

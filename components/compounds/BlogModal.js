@@ -10,6 +10,14 @@ const StyledBlogModal = styled.div`
   position: relative;
   z-index: 100;
 
+  @media (max-width: ${p => p.theme.breakpoint.desktopL}) {
+    width: 81%;
+  }
+
+  @media (max-width: ${p => p.theme.breakpoint.tabletPortrait}) {
+    width: 100%;
+  }
+
   .container-design-overlay {
     position: absolute;
     width: 100%;
@@ -26,18 +34,26 @@ const StyledBlogModal = styled.div`
     z-index: 102;
   }
 
-
   .area-content {
     width: 100%;
     height: 100%;
     overflow: auto;
     position: relative;
     z-index: 101;
+    padding-bottom: ${p => p.theme.incrementFixed(6)};
   }
 
   .container-content {
     width: 62%;
     margin: 0 auto;
+
+    @media (max-width: ${p => p.theme.breakpoint.tabletLandscape}) {
+      width: 81%;
+    }
+
+    @media (max-width: ${p => p.theme.breakpoint.tabletPortrait}) {
+      width: 100%;
+    }
   }
 
   .container-photo {
@@ -74,7 +90,7 @@ export class BlogModal extends Component {
               <Typography variant="display-2">Blog Date</Typography>
             </Item>
 
-            <Container name="photo" margin="stack-base">
+            <Container name="photo" margin="stack-l">
               <Item margin="stack-m">
                 <img
                   src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
@@ -89,7 +105,7 @@ export class BlogModal extends Component {
               </Item>
             </Container>
 
-            <Item margin="stack-base">
+            <Item margin="stack-l">
               <Typography variant="body">
                 Esse in culpa duis qui duis esse sit nostrud esse nisi et irure
                 duis eiusmod. Lorem nulla labore quis irure adipisicing non
@@ -99,7 +115,7 @@ export class BlogModal extends Component {
               </Typography>
             </Item>
 
-            <Item margin="stack-base">
+            <Item margin="stack-l">
               <Typography variant="body">
                 Duis ex minim consectetur id do laboris irure ipsum nostrud non
                 commodo minim amet. Sunt nisi eu ex ipsum. Minim esse quis
@@ -112,7 +128,7 @@ export class BlogModal extends Component {
               </Typography>
             </Item>
 
-            <Item margin="stack-base">
+            <Item margin="stack-l">
               <Typography variant="body">
                 Ut culpa ipsum elit nisi non tempor sint enim ea deserunt do
                 ipsum. Dolor dolor proident cupidatat elit enim voluptate nulla
@@ -121,7 +137,7 @@ export class BlogModal extends Component {
               </Typography>
             </Item>
 
-            <Container name="photo" margin="stack-base">
+            <Container name="photo" margin="stack-l">
               <Item margin="stack-m">
                 <img
                   src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
@@ -136,7 +152,7 @@ export class BlogModal extends Component {
               </Item>
             </Container>
 
-            <Item margin="stack-base">
+            <Item margin="stack-l">
               <Typography variant="body">
                 Ut culpa ipsum elit nisi non tempor sint enim ea deserunt do
                 ipsum. Dolor dolor proident cupidatat elit enim voluptate nulla
@@ -146,7 +162,6 @@ export class BlogModal extends Component {
             </Item>
           </Container>
         </Area>
-
       </StyledBlogModal>
     );
   }

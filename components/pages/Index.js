@@ -20,6 +20,10 @@ const StyledIndex = styled.div`
     margin: 0 auto;
     background-color: ${p => p.theme.color.light};
     position: relative;
+
+    @media (max-width: ${p => p.theme.breakpoint.desktopL}) {
+      width: 100%;
+    }
   }
 
   .area-header {
@@ -43,19 +47,32 @@ const StyledIndex = styled.div`
 
   .item-intro-text {
     width: 62%;
+
+    @media (max-width: ${p => p.theme.breakpoint.tabletLandscape}) {
+      width: 100%;
+    }
   }
 
   .box-blog {
   }
 
   .item-blog-item {
+    /* border: 1px solid magenta; */
     overflow: hidden;
     width: 33.333333%;
     height: ${p => p.theme.incrementFixed(12)};
-    /* border: 1px solid magenta; */
+
+    @media (max-width: ${p => p.theme.breakpoint.tabletLandscape}) {
+      width: 50%;
+    }
+
+    @media (max-width: ${p => p.theme.breakpoint.tabletPortrait}) {
+      width: 100%;
+    }
 
     img {
       width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center;
     }
@@ -120,7 +137,7 @@ export default class extends Component {
     return (
       <StyledIndex>
         <Container name="main">
-          <Area name="header" as="header" padding="inset-base">
+          <Area name="header" as="header" padding="inset-base" margin="stack-s">
             <Item name="profile" margin="stack-base">
               <img src="/static/images/profile.jpg" alt="" />
             </Item>

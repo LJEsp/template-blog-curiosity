@@ -43,20 +43,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body, #__next {
-
-}
-
-html, body, #__next {
-  height: 100%;
-}
+    height: 100%;
+  }
 
 
   html {
     font-size: 16px;
     scroll-behavior: smooth;
 
-    ${
-      "" /* @media (max-width: ${style.breakpoint.tabletPortrait}) {
+    @media (max-width: ${style.breakpoint.tabletPortrait}) {
       font-size: 13px;
     }
 
@@ -78,18 +73,17 @@ html, body, #__next {
     
     @media (min-width: ${style.breakpoint.desktopXXL}) {
     font-size: 21px;
-    } */
-    }
+    } 
+    
   }
 
   body {
     color: ${style.color.dark};
     font-family: ${style.font.sansSerif};
     font-size: 16px;
-    background-color: ${style.color.grey.medium};
+    background-color: ${style.color.light};
 
-    ${
-      "" /* @media (max-width: ${style.breakpoint.tabletPortrait}) {
+   @media (max-width: ${style.breakpoint.tabletPortrait}) {
       font-size: 15px;
     }
 
@@ -111,7 +105,6 @@ html, body, #__next {
     
     @media (min-width: ${style.breakpoint.desktopXXL}) {
       font-size: 24px;
-    }  */
     }
   }
 
