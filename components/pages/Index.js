@@ -3,6 +3,12 @@ import styled from "styled-components";
 import { Button, Typography } from "../elements";
 import { Item, Box, Container, Area } from "../layout";
 import { BlogItem, BlogModal } from "../compounds";
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks
+} from "body-scroll-lock";
+import { Transition } from "react-spring";
 
 const StyledIndex = styled.div`
   height: 100%;
@@ -12,7 +18,7 @@ const StyledIndex = styled.div`
     width: 62%;
     min-height: 100%;
     margin: 0 auto;
-    /* background-color: ${p => p.theme.color.light}; */
+    background-color: ${p => p.theme.color.light};
     position: relative;
   }
 
@@ -63,17 +69,54 @@ const StyledIndex = styled.div`
 
   .container-blog-modal {
     /* border: 1px solid magenta; */
-    height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    margin: 0 auto;
+    height: 100vh;
+  }
+
+  .container-button-back-area {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
   }
 `;
 
 export default class extends Component {
+  state = {
+    isModalOpen: false
+  };
+
+  targetRef = React.createRef();
+  modalRef = null;
+
+  componentDidMount() {
+    this.modalRef = this.targetRef.current;
+  }
+
+  handleToggleModal = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen }, () => {
+      if (this.state.isModalOpen === true) {
+        disableBodyScroll(this.modalRef);
+      } else {
+        enableBodyScroll(this.modalRef);
+      }
+    });
+  };
+
+  componentWillUnmount() {
+    clearAllBodyScrollLocks();
+  }
+
   render() {
+    const { isModalOpen } = this.state;
+
     return (
       <StyledIndex>
         <Container name="main">
@@ -100,31 +143,31 @@ export default class extends Component {
           </Area>
 
           <Box name="blog" wrap>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1547191084-52b07edfa63d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1547195072-65d33400f09b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1546882595-3423093cedff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1545102241-f661847de562?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1545949139-bb90937876ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1545966239-6fe31602f152?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
-            <Item name="blog-item" as="a">
+            <Item name="blog-item" as="a" onClick={this.handleToggleModal}>
               <BlogItem photo="https://images.unsplash.com/photo-1540206395-913144f5875c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
             </Item>
           </Box>
@@ -133,9 +176,30 @@ export default class extends Component {
             <Typography>&copy; 2019 Leandro J. Esparrago</Typography>
           </Area>
 
-          {/* <Container name="blog-modal">
-            <BlogModal />
-          </Container> */}
+          <Transition
+            items={isModalOpen}
+            native
+            from={{ transform: "translateY(110vh)" }}
+            enter={{ transform: "translateY(0)" }}
+            leave={{ transform: "translateY(-110vh)" }}
+          >
+            {isModalOpen =>
+              isModalOpen &&
+              (props => (
+                <Container
+                  name="blog-modal"
+                  animate={props}
+                  ref={this.modalRef}
+                >
+                  <BlogModal handleToggleModal={this.handleToggleModal} />
+                  <Container
+                    name="button-back-area"
+                    onClick={this.handleToggleModal}
+                  />
+                </Container>
+              ))
+            }
+          </Transition>
         </Container>
       </StyledIndex>
     );

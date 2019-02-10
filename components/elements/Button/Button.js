@@ -143,7 +143,11 @@ export class Button extends Component {
         );
 
       case "text":
-        return <StyledButtonText>{this.props.children}</StyledButtonText>;
+        return (
+          <StyledButtonText {...this.props}>
+            {this.props.children}
+          </StyledButtonText>
+        );
 
       default:
         return (

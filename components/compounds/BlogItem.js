@@ -7,6 +7,7 @@ import { Typography } from "../elements";
 const StyledBlogItem = styled.div`
   position: relative;
   overflow: hidden;
+  user-select: none;
 
   .container-design-overlay {
     background-color: ${p => p.theme.color.dark};

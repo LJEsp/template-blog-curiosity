@@ -86,7 +86,7 @@ html, body, #__next {
     color: ${style.color.dark};
     font-family: ${style.font.sansSerif};
     font-size: 16px;
-    background-color: ${style.color.white};
+    background-color: ${style.color.grey.medium};
 
     ${
       "" /* @media (max-width: ${style.breakpoint.tabletPortrait}) {

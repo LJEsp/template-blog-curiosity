@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Typography } from "../elements";
+import { Typography, Button } from "../elements";
 import { Item, Box, Container, Area } from "../layout";
 
 const StyledBlogModal = styled.div`
-  width: 100%;
+  margin: 0 auto;
+  width: 62%;
   height: 100%;
   position: relative;
   z-index: 100;
@@ -14,9 +15,17 @@ const StyledBlogModal = styled.div`
     width: 100%;
     height: 100%;
     background-color: ${p => p.theme.color.light};
-    opacity: 0.9;
+    opacity: 0.95;
     z-index: 100;
   }
+
+  .container-button-close {
+    position: absolute;
+    top: ${p => p.theme.size.s};
+    right: ${p => p.theme.size.base};
+    z-index: 102;
+  }
+
 
   .area-content {
     width: 100%;
@@ -44,14 +53,25 @@ const StyledBlogModal = styled.div`
 
 export class BlogModal extends Component {
   render() {
+    const { handleToggleModal } = this.props;
+
     return (
       <StyledBlogModal>
         <Container name="design-overlay" />
+        <Container name="button-close">
+          <Button variant="text" onClick={handleToggleModal}>
+            Close
+          </Button>
+        </Container>
 
         <Area name="content" padding="inset-base">
           <Container name="content">
-            <Item margin="stack-l">
+            <Item margin="stack-base">
               <Typography variant="display-1">Blog Title</Typography>
+            </Item>
+
+            <Item margin="stack-l">
+              <Typography variant="display-2">Blog Date</Typography>
             </Item>
 
             <Container name="photo" margin="stack-base">
@@ -115,8 +135,18 @@ export class BlogModal extends Component {
                 </Typography>
               </Item>
             </Container>
+
+            <Item margin="stack-base">
+              <Typography variant="body">
+                Ut culpa ipsum elit nisi non tempor sint enim ea deserunt do
+                ipsum. Dolor dolor proident cupidatat elit enim voluptate nulla
+                reprehenderit veniam dolor cupidatat do. Anim consequat id ex
+                amet voluptate deserunt ullamco reprehenderit officia.
+              </Typography>
+            </Item>
           </Container>
         </Area>
+
       </StyledBlogModal>
     );
   }
