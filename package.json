@@ -8,7 +8,7 @@
     "start": "next start",
     "export": "next export",
     "build-netlify": "npm run build && npm run export",
-    "heroku-postbuild": "npm run build && npm run start"
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "body-scroll-lock": "^2.6.1",
