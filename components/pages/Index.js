@@ -9,6 +9,7 @@ import {
   clearAllBodyScrollLocks
 } from "body-scroll-lock";
 import { Transition } from "react-spring";
+import "isomorphic-fetch";
 
 const StyledIndex = styled.div`
   height: 100%;
@@ -106,6 +107,14 @@ const StyledIndex = styled.div`
 `;
 
 export default class extends Component {
+  static async getInitialProps({ req }) {
+    const res = await fetch(
+      "https://ljesp-blog-curiosity-api.herokuapp.com/posts"
+    );
+    const json = await res.json();
+    return { posts: json };
+  }
+
   state = {
     isModalOpen: false
   };
@@ -115,6 +124,8 @@ export default class extends Component {
 
   componentDidMount() {
     this.modalRef = this.targetRef.current;
+
+    console.log(this.props.posts[2]);
   }
 
   handleToggleModal = () => {
